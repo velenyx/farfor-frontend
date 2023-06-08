@@ -1,0 +1,65 @@
+@import 'src/assets/styles/index.scss';
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: rem(60);
+  background: url('/homeBanner/homeBanner.png') no-repeat right 200px bottom, linear-gradient(90deg, #fe5000, #ff6e1d);
+  border-radius: rem(40);
+}
+
+.order {
+  max-width: rem(450);
+}
+
+.title {
+  color: #fff;
+  font-size: rem(32);
+  line-height: rem(38);
+  font-weight: 900;
+
+  &:not(:last-child) {
+    margin-bottom: rem(25);
+  }
+}
+
+.text {
+  color: #fff;
+  font-size: rem(16);
+  font-weight: 600;
+  line-height: rem(19);
+
+  &:not(:last-child) {
+    margin-bottom: rem(25);
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: rem(30);
+}
+
+.qr {
+  max-width: rem(190);
+
+  &__text {
+    color: #fff;
+    font-size: rem(18);
+    font-weight: 600;
+    line-height: rem(19);
+
+    &:not(:last-child) {
+      margin-bottom: rem(26);
+    }
+  }
+}
+
+.qr__img {
+  height: 124px;
+  width: 124px;
+
+  img {
+    max-width: 100%;
+  }
+}

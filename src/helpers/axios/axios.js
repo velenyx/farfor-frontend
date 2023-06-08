@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { SERVER_URL, TOKEN } from '@helpers'
 
-const $axios = axios.create({
+export const $axios = axios.create({
   withCredentials: true,
   baseURL: SERVER_URL,
 })
@@ -31,5 +31,3 @@ $axios.interceptors.response.use(
     }
   },
 )
-
-export default $axios

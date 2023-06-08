@@ -21,6 +21,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 25px;
+  transition: all 0.3s ease 0s;
 
   &:first-child {
     display: flex;
@@ -32,6 +33,12 @@
     svg {
       width: rem(20);
       height: rem(20);
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #ee5209;
     }
   }
 }

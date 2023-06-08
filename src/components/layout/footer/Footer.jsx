@@ -1,145 +1,47 @@
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.scss'
+import { data } from './footer.data'
+import { Fragment } from 'react'
+
+import { AiFillApple } from 'react-icons/ai'
+import { FaGooglePlay } from 'react-icons/fa'
 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className='footer__container'>
         <div className={styles.footer__links}>
-          <div className={styles.item}>
-            <div className={styles.title}>Клиентам</div>
-            <ul className={styles.list__links}>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Доставка и самовывоз
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Акции
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Оплата
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Бонусы
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Новости
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.title}>Поддержка</div>
-            <ul className={styles.list__links}>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Оставить отзыв
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Сообщить об ошибке
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Карта сайта
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.title}>Компания</div>
-            <ul className={styles.list__links}>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Вакансии
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Открыть свое дело
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Полные реквизиты
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Тайный покупатель
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Коммерческое предложение
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className={styles.item}>
-            <div className={styles.title}>Информация</div>
-            <ul className={styles.list__links}>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Политика конфиденциальности
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Пользовательское соглашение
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Для потребителей
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Правила продажи
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {data.map(item => (
+            <div className={styles.item} key={item.title}>
+              <div className={styles.title}>{item.title}</div>
+              <ul className={styles.list__links}>
+                {item.links.map(subitem => (
+                  <li className={styles.item__link} key={subitem.text}>
+                    <Link className={styles.link} to={subitem.to}>
+                      {subitem.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
           <div className={styles.item}>
             <div className={styles.title}>Наше приложение</div>
-            <ul className={styles.list__links}>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Доставка и самовывоз
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Акции
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Оплата
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Бонусы
-                </Link>
-              </li>
-              <li className={styles.item__link}>
-                <Link className={styles.link} to='/'>
-                  Новости
-                </Link>
-              </li>
-            </ul>
+            <div className={styles.item__body}>
+              <Link to='/a' className={styles.button__apps}>
+                <span>Скачать</span>{' '}
+                <span>
+                  <AiFillApple /> <FaGooglePlay />
+                </span>
+              </Link>
+              <div className={styles.footer__qr}>
+                <div className={styles.qr__text}>Наведите камеру на QR-код, чтобы скачать</div>
+                <div className={styles.qr}>
+                  <img src='/footer-qr.svg' alt='' />
+                </div>
+              </div>
+              <div className={styles.footer__available}>Доступно в AppStore, Google Play, AppGallery</div>
+            </div>
           </div>
         </div>
         <div className={styles.footer__copy}>
@@ -149,7 +51,21 @@ export const Footer = () => {
               Данные о продавце в разделе <Link to='/'>Реквизиты</Link>
             </div>
           </div>
-          <div className={styles.copy__right}></div>
+          <div className={styles.copy__right}>
+            <div className={styles.payment}>
+              <img src='/icons/footer-visa.svg' alt='' />
+              <img src='/icons/footer-mastercard.svg' alt='' />
+              <img src='/icons/footer-mir.svg' alt='' />
+            </div>
+            <div className={styles.socials}>
+              <Link to='https://vk.com/farfordostavka'>
+                <img src='/vk.svg' alt='' />
+              </Link>
+              <Link to='https://t.me/farfordostavkaTG'>
+                <img src='/telegram.svg' alt='' />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

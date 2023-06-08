@@ -5,9 +5,7 @@ export const Layout = ({ children }) => {
   return (
     <div className='wrapper'>
       <Header />
-      <main className='main__container' style={{ padding: 50 }}>
-        {children}
-      </main>
+      <main className='main__container'>{children}</main>
       <Footer />
     </div>
   )
