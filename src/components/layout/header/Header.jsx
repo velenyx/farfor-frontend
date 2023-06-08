@@ -4,14 +4,13 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { AiOutlineUser, AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai'
 import cn from 'clsx'
 import { useState } from 'react'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside/useOnClickOutside'
 import { Navigation } from './navigation/Navigation'
+import { useOnClickOutside } from '@hooks'
 
 export const Header = ({ backLink = '/' }) => {
   const [showCityModal, setShowCityModal] = useState(false)
   const { isShow: showTimeModal, setIsShow: setShowTimeModal, ref } = useOnClickOutside(false)
 
-  console.log('@show', showTimeModal)
   return (
     <>
       <header className={styles.header}>

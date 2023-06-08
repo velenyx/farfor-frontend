@@ -1,4 +1,4 @@
-import Layout from "../../components/layout/Layout"
+import { Layout } from '@components'
 
 export const Home = () => {
   return <Layout>123</Layout>
