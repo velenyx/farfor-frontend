@@ -13,6 +13,7 @@
     "@tanstack/react-query": "^4.29.12",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
+    "compose-function": "^3.0.3",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
@@ -21,7 +22,9 @@
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.12.0",
     "sass": "^1.62.1",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "swiper": "^9.3.2",
+    "vite-jsconfig-paths": "^2.0.1"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^4.29.9",

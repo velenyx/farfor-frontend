@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import jsconfigPaths from 'vite-jsconfig-paths'
 
 import path from 'node:path'
 
@@ -15,5 +16,5 @@ export default defineConfig({
       '@assets/*': path.resolve(__dirname, './src/assets/*'),
     },
   },
-  plugins: [react()],
+  plugins: [react(), jsconfigPaths()],
 })
