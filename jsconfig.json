@@ -22,9 +22,9 @@
     "paths": {
       "@screens": ["./screens"],
       "@components": ["./components"],
-      "@assets/*": ["./src/assets/*"],
       "@hooks": ["./src/hooks"],
-      "@helpers": ["./src/helpers"]
+      "@helpers": ["./src/helpers"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src"],

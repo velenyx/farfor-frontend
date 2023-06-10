@@ -1,0 +1,175 @@
+@import 'src/assets/styles/index.scss';
+
+.product {
+  position: relative;
+
+  width: rem(273);
+
+  &__image {
+    position: relative;
+    min-height: rem(187);
+    max-height: rem(270);
+    max-width: rem(273);
+
+    @media (any-hover: hover) {
+      &:hover {
+        cursor: pointer;
+        transition: transform 0.2s ease-in;
+        transform: translateY(5px);
+      }
+    }
+  }
+
+  &__sale {
+    height: rem(20);
+  }
+}
+
+.title {
+  padding: rem(16) 0;
+  font-size: rem(16);
+  font-weight: 800;
+  line-height: 20px;
+  color: #2c2f39;
+}
+
+.description {
+  font-size: rem(14);
+  font-weight: 500;
+  line-height: 17px;
+  color: #747c8a;
+
+  &:not(:last-child) {
+    margin-bottom: 27px;
+  }
+}
+.buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__button {
+    cursor: pointer;
+    color: #fff;
+    padding: 12px 35px;
+    font-weight: 800;
+    border-radius: rem(40);
+    box-shadow: 0 4px 20px rgba(255, 80, 0, 0.16);
+    background-color: #fe5000;
+    transition: all 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: #fd4002;
+        box-shadow: 0 7px 35px rgba(255, 80, 0, 0.36);
+      }
+    }
+  }
+}
+
+.price {
+  font-size: rem(22);
+  font-weight: 800;
+  line-height: rem(26);
+  color: #2c2f39;
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  padding-bottom: 66.66666666666666%;
+}
+
+.weight__wrapper {
+  padding-top: rem(15);
+  display: flex;
+  align-items: center;
+  gap: rem(15);
+  color: #747c8a;
+  font-weight: 600;
+  font-size: rem(14);
+  line-height: rem(16);
+}
+
+.weight {
+  font-weight: 800;
+  font-size: rem(16);
+}
+
+.weight__tooltip {
+  position: relative;
+}
+
+.tooltip__body {
+  position: absolute;
+  width: max-content;
+  bottom: 130%;
+  left: -130%;
+  z-index: 9;
+  padding: 22px 15px;
+  background-color: #000;
+  border-radius: 20px;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tooltip__trigger {
+  padding: 5px 7px;
+  font-size: rem(10);
+  font-weight: 800;
+  color: #9ea7b6;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #f1f4f9;
+  border-radius: 6px;
+  transition: all 0.3s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #2c2f39;
+      background-color: #d8dee9;
+
+      + .tooltip__body {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.kpfc {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tooltip__header {
+  margin-bottom: rem(7);
+  font-size: rem(14);
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+}
+
+.kpfc__item {
+}
+
+.kpfc__count {
+  font-size: rem(14);
+  font-weight: 800;
+}
+
+.kpfc__description {
+  font-size: rem(12);
+  font-weight: 600;
+}
