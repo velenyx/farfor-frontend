@@ -1,7 +1,7 @@
 import { ProductList } from 'features/productList'
 import { ProductModal } from 'features/productModal'
 import { useState } from 'react'
-import { HomeBanner, Layout, LayoutModal } from 'shared'
+import { HomeBanner, Layout } from 'shared'
 
 export const Home = () => {
   return (

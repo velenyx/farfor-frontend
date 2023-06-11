@@ -1,0 +1,21 @@
+body::after {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.36);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease 0s;
+  pointer-events: none;
+  z-index: 149;
+}
+
+.modal-show {
+  overflow-y: hidden;
+}
+
+.modal-show::after {
+  opacity: 1;
+}

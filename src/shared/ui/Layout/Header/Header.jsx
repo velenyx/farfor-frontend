@@ -8,7 +8,7 @@ import {
 import cn from 'clsx'
 import { useState } from 'react'
 import { Navigation } from './navigation/Navigation'
-import { useOnClickOutside } from 'shared'
+import { Modal, useOnClickOutside } from 'shared'
 import styles from './Header.module.scss'
 
 export const Header = ({ backLink = '/' }) => {
@@ -21,68 +21,71 @@ export const Header = ({ backLink = '/' }) => {
 
   return (
     <>
-      <div
+      {/* <div
         className={cn(styles.city__modal_substrate, {
           [styles.opacityShow]: showCityModal,
-        })}>
-        <div className={styles.city__modal_wrapper}>
-          <div className={styles.city__modal_header}>
-            <input
-              type='text'
-              placeholder='Начните вводить ваш город'
-              className={styles.city__modal_input}
-            />
-            <div className={styles.city__modal_selected_city}>
-              Выбран: <span>Липецк</span>
-            </div>
-            <div
-              className={styles.city__modal_close}
-              onClick={() => setShowCityModal(!showCityModal)}>
-              <AiOutlineClose />
-            </div>
+        })}> */}
+      <Modal isShow={showCityModal} handleClose={setShowCityModal}>
+        {/* <div className={styles.city__modal_wrapper}> */}
+        <div className={styles.city__modal_header}>
+          <input
+            type='text'
+            placeholder='Начните вводить ваш город'
+            className={styles.city__modal_input}
+          />
+          <div className={styles.city__modal_selected_city}>
+            Выбран: <span>Липецк</span>
           </div>
-          <div className={styles.city__modal_body}>
-            <ul>
-              <li>
-                <Link> Кохма</Link>
-              </li>
-              <li>
-                <Link> Краснодар</Link>
-              </li>
-              <li>
-                <Link> Крымск</Link>
-              </li>
-              <li>
-                <Link> Курск</Link>
-              </li>
-              <li>
-                <Link> Кохма</Link>
-              </li>
-              <li>
-                <Link> Краснодар</Link>
-              </li>
-              <li>
-                <Link> Крымск</Link>
-              </li>
-              <li>
-                <Link> Курск</Link>
-              </li>
-              <li>
-                <Link> Кохма</Link>
-              </li>
-              <li>
-                <Link> Краснодар</Link>
-              </li>
-              <li>
-                <Link> Крымск</Link>
-              </li>
-              <li>
-                <Link> Курск</Link>
-              </li>
-            </ul>
+          <div
+            className={styles.city__modal_close}
+            onClick={() => setShowCityModal(!showCityModal)}>
+            <AiOutlineClose />
           </div>
         </div>
-      </div>
+        <div className={styles.city__modal_body}>
+          <ul>
+            <li>
+              <Link> Кохма</Link>
+            </li>
+            <li>
+              <Link> Краснодар</Link>
+            </li>
+            <li>
+              <Link> Крымск</Link>
+            </li>
+            <li>
+              <Link> Курск</Link>
+            </li>
+            <li>
+              <Link> Кохма</Link>
+            </li>
+            <li>
+              <Link> Краснодар</Link>
+            </li>
+            <li>
+              <Link> Крымск</Link>
+            </li>
+            <li>
+              <Link> Курск</Link>
+            </li>
+            <li>
+              <Link> Кохма</Link>
+            </li>
+            <li>
+              <Link> Краснодар</Link>
+            </li>
+            <li>
+              <Link> Крымск</Link>
+            </li>
+            <li>
+              <Link> Курск</Link>
+            </li>
+          </ul>
+        </div>
+        {/* </div> */}
+      </Modal>
+
+      {/* </div> */}
       <header className={styles.header}>
         <div className={styles.header__container}>
           <div className={styles.information}>

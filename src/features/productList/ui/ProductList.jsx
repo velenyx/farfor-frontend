@@ -1,13 +1,14 @@
 import { ProductCard, productApi } from 'entities/productCard'
 import styles from './ProductList.module.scss'
 import { useState } from 'react'
-import { LayoutModal, useOnClickOutside } from 'shared'
+import { Modal, useOnClickOutside } from 'shared'
 import { ProductModal } from 'features/productModal'
 
 export const ProductList = ({ clickHandler }) => {
+  const [isModalShow, setIsModalShow] = useState(false)
+  console.log('@isShow', isModalShow)
   const [productId, setProductId] = useState(null)
   console.log('ProductID', productId)
-  const { isShow: isShowModal, setIsShow: SetIsShowModal } = useOnClickOutside()
 
   const { data, isSuccess } = productApi.getAll()
 
@@ -17,22 +18,25 @@ export const ProductList = ({ clickHandler }) => {
 
   return (
     <>
-      <LayoutModal>
+      {/* <LayoutModal>
         <ProductModal
           isShowModal={isShowModal}
           handleClose={() => SetIsShowModal(false)}
           product={productId}
         />
-      </LayoutModal>
+      </LayoutModal> */}
+      <Modal isShow={isModalShow} handleClose={setIsModalShow}>
+        123123
+      </Modal>
       <div
         style={{ display: 'flex', gap: '100px 36px', flexWrap: 'wrap' }}
-        onClick={() => SetIsShowModal(!isShowModal)}>
+        onClick={() => setIsModalShow(true)}>
         {data.results.map(product => (
           <ProductCard
             item={product}
             key={product.pk}
             handleProduct={() => setProductId(product)}
-            handleModal={() => SetIsShowModal(true)}
+            handleModal={() => setIsModalShow(true)}
           />
         ))}
       </div>
