@@ -1,14 +1,33 @@
-import { Tags } from 'shared'
+import { CheckBoxSlide, ProductBuy, Tags } from 'shared'
 import styles from './ModalProductCard.module.scss'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
 export const ModalProductCard = ({ product }) => {
-  console.log('@product', product.properties)
+  const [checkedFirst, setCheckedFirst] = useState(true)
+  const [checkedTwo, setCheckedTwo] = useState(false)
+
   return (
     <div className={styles.modal}>
       <div className={styles.modal__wrapper}>
         <div className={styles.modal__image}>
-          <img src={`http://localhost:8000/api/v1${product.image}`} alt='' />
+          <div style={{ position: 'relative' }}>
+            <img
+              src={`http://localhost:8000/api/v1${product.image}`}
+              alt=''
+              draggable={false}
+            />
+            {product.promotion && (
+              <div
+                className={styles.promotion}
+                style={{ backgroundColor: `${product.promotion?.hex_color}` }}>
+                {product.promotion.name}
+              </div>
+            )}
+          </div>
+          {product.discount > 1 && (
+            <span className={styles.discount}>{`-${product.discount}%`}</span>
+          )}
+
           {product.properties.map(tag => (
             <Tags tag={tag} height={24} width={24} />
           ))}
@@ -47,6 +66,20 @@ export const ModalProductCard = ({ product }) => {
               <div className={styles.kpfc__description}>Ккал</div>
             </div>
           </div>
+          {product && product.sizes.length > 1 && (
+            <CheckBoxSlide
+              product={product}
+              checkedTwo={checkedTwo}
+              setCheckedTwo={setCheckedTwo}
+              checkedFirst={checkedFirst}
+              setCheckedFirst={setCheckedFirst}
+            />
+          )}
+          <ProductBuy
+            checkedFirst={checkedFirst}
+            isTooltip={false}
+            product={product}
+          />
         </div>
       </div>
     </div>

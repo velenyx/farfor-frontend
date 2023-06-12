@@ -10,6 +10,7 @@ export const Modal = ({ children, isShow, handleClose }) => {
   } else {
     bodyTag.classList.remove('modal-show')
   }
+
   return (
     <div
       className={cn(styles.modal, { [styles.modal_show]: isShow })}

@@ -2,7 +2,7 @@ import styles from './CheckBoxSlide.module.scss'
 import cn from 'clsx'
 
 export const CheckBoxSlide = ({
-  item,
+  product,
   checkedTwo,
   setCheckedTwo,
   checkedFirst,
@@ -21,7 +21,7 @@ export const CheckBoxSlide = ({
           checked={checkedFirst}
           className={styles.checkbox}
           type='checkbox'
-          id={item.sizes[0].size + item.name}
+          id={product.sizes[0].size + product.name}
           readOnly
         />
         <label
@@ -31,7 +31,7 @@ export const CheckBoxSlide = ({
           onClick={() => {
             setCheckedFirst(!checkedFirst), setCheckedTwo(!checkedTwo)
           }}>
-          {item.sizes[0].size}
+          {product.sizes[0].size}
         </label>
       </div>
       <div className={styles.checkbox__wrapper}>
@@ -39,7 +39,7 @@ export const CheckBoxSlide = ({
           checked={checkedTwo}
           className={styles.checkbox}
           type='checkbox'
-          id={item.sizes[0].size + item.name}
+          id={product.sizes[0].size + product.name}
           readOnly
         />
         <label
@@ -49,7 +49,7 @@ export const CheckBoxSlide = ({
           onClick={() => {
             setCheckedFirst(!checkedFirst), setCheckedTwo(!checkedTwo)
           }}>
-          {item.sizes[1].size}
+          {product.sizes[1].size}
         </label>
       </div>
     </div>

@@ -40,6 +40,7 @@ export const ProductList = ({ clickHandler }) => {
           spaceBetween={20}
           slidesPerView={1}
           loop={true}
+          autoHeight={true}
           initialSlide={3}>
           <div
             onClick={() => swiperRef.current.slidePrev()}
@@ -64,7 +65,7 @@ export const ProductList = ({ clickHandler }) => {
           <ProductCard
             index={index}
             handleSwiper={() => swiperRef.current.slideTo(index)}
-            item={product}
+            product={product}
             key={product.pk}
             handleProduct={() => setProductId(product)}
             handleModal={setIsModalShow}

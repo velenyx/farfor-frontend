@@ -1,7 +1,7 @@
 @import 'src/app/styles/index.scss';
 
 .modal {
-  display: flex;
+  // display: flex;
 
   position: fixed;
   top: 0;
@@ -20,13 +20,14 @@
   z-index: 150;
   visibility: visible;
   // overflow: auto;
-  overflow: hidden;
+  overflow: auto;
   pointer-events: auto;
 }
 
 .modal_show .modal__content {
   visibility: visible;
   transform: scale(1);
+  opacity: 1;
 }
 
 .modal__wrapper {
@@ -38,12 +39,12 @@
   width: 100%;
   overflow: hidden;
   flex: 1 1 auto;
-  display: flex;
 }
 
 .modal__content {
   // display: block;
-  margin: 24px;
+  // margin: 24px;
+  opacity: 0;
   visibility: hidden;
   transform: scale(0);
   transition: transform 0.3s ease 0s;
