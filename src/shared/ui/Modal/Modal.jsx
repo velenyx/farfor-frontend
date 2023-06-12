@@ -1,6 +1,7 @@
 import styles from './Modal.module.scss'
 import './modal.scss'
 import cn from 'clsx'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export const Modal = ({ children, isShow, handleClose }) => {
   const bodyTag = document.querySelector('body')
@@ -17,7 +18,10 @@ export const Modal = ({ children, isShow, handleClose }) => {
         <div
           className={styles.modal__content}
           onClick={e => e.stopPropagation()}>
-          {children}
+          <span className={styles.close} onClick={() => handleClose(false)}>
+            <AiOutlineClose />
+          </span>
+          <div className={styles.modal__body}>{children}</div>
         </div>
       </div>
     </div>

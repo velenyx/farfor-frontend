@@ -4,3 +4,5 @@ export { useOnClickOutside } from './lib/hooks/useOnClickOutside/useOnClickOutsi
 export { Layout } from './ui/Layout'
 export { HomeBanner } from './ui/HomeBanner/HomeBanner'
 export { Modal } from './ui/Modal/Modal'
+export { Tags } from './ui/Tags/Tags'
+export { CheckBoxSlide } from './ui/CheckBoxSlide/CheckBoxSlide'

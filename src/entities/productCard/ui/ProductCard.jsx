@@ -1,14 +1,31 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import styles from './ProductCard.module.scss'
 import cn from 'clsx'
+import { CheckBoxSlide, Tags } from 'shared'
 
-export const ProductCard = ({ item, handleProduct, handleModal }) => {
+export const ProductCard = ({
+  item,
+  handleProduct,
+  handleModal,
+  index,
+  handleSwiper,
+}) => {
   const [checkedFirst, setCheckedFirst] = useState(true)
   const [checkedTwo, setCheckedTwo] = useState(false)
   const twoPrice = checkedFirst ? item.sizes[0].price : item.sizes[1].price
+  const twoPriceDiscount = checkedFirst
+    ? item.sizes[0].discount_price
+    : item.sizes[1].discount_price
+
   const twoWeight = checkedFirst ? item.sizes[0].weight : item.sizes[1].weight
+
   return (
-    <div className={styles.product}>
+    <div
+      className={styles.product}
+      onClick={() => {
+        handleModal(true)
+        handleSwiper(index)
+      }}>
       <div className={styles.product__image}>
         <div
           className={styles.image}
@@ -16,19 +33,15 @@ export const ProductCard = ({ item, handleProduct, handleModal }) => {
             backgroundImage: `url('http://localhost:8000/api/v1${item.image}')`,
           }}
         />
+        {item.discount > 1 && (
+          <span className={styles.discount}>{`-${item.discount}%`}</span>
+        )}
       </div>
-      <div className={styles.product__tags}>
-        {/*TODO - Декомпозировать*/}
-        {item.property.map(tag => (
-          <div className={styles.tags__body} key={tag.icon}>
-            <img
-              className={styles.tag__icon}
-              src={`http://localhost:8000/api/v1${tag.icon}`}
-            />
-            <div className={styles.tag__tooltip}>{tag.name}</div>
-          </div>
-        ))}
-      </div>
+      {item.properties.map(tag => (
+        <Fragment key={tag.name}>
+          <Tags tag={tag} />
+        </Fragment>
+      ))}
       <div className={styles.product__sale}>
         {/*TODO - Декомпозировать*/}
         {item.promotion && (
@@ -45,7 +58,7 @@ export const ProductCard = ({ item, handleProduct, handleModal }) => {
         </div>
         <div className={styles.description}>{item.description}</div>
         {item.sizes.length > 1 && (
-          <CheckBoxes
+          <CheckBoxSlide
             item={item}
             checkedTwo={checkedTwo}
             setCheckedTwo={setCheckedTwo}
@@ -55,21 +68,32 @@ export const ProductCard = ({ item, handleProduct, handleModal }) => {
         )}
 
         <div className={styles.buy}>
-          {item.sizes.length > 1 && (
+          {item.sizes.length > 1 && !item.discount && (
             <div className={styles.price}>{twoPrice}</div>
           )}
-          {item.sizes.length === 1 && (
+          {item.sizes.length > 1 && item.discount && (
+            <div className={styles.price}>{twoPriceDiscount}</div>
+          )}
+          {item.sizes.length === 1 && !item.discount && (
             <div className={styles.price}>{item.sizes[0].price}</div>
+          )}
+          {item.sizes.length === 1 && (
+            <div className={styles.price__wrapper}>
+              <div className={styles.price__new}>
+                {item.sizes[0].discount_price}
+              </div>
+              <div className={styles.price__old}>{item.sizes[0].price}</div>
+            </div>
           )}
 
           <div className={styles.buy__button}>Хочу!</div>
         </div>
         <div className={styles.weight__wrapper}>
           {item.sizes.length === 1 && (
-            <div className={styles.weight}>{item.sizes[0].weight}</div>
+            <div className={styles.weight}>{item.sizes[0].weight + ' г'}</div>
           )}
           {item.sizes.length > 1 && (
-            <div className={styles.weight}>{twoWeight}</div>
+            <div className={styles.weight}>{twoWeight + ' г'}</div>
           )}
           <div className={styles.weight__tooltip}>
             <div className={styles.tooltip__trigger}>КБЖУ</div>
@@ -100,59 +124,6 @@ export const ProductCard = ({ item, handleProduct, handleModal }) => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
-
-const CheckBoxes = ({
-  item,
-  checkedTwo,
-  setCheckedTwo,
-  checkedFirst,
-  setCheckedFirst,
-}) => {
-  return (
-    <div className={styles.checkboxes__body}>
-      {' '}
-      <div
-        className={cn(styles.checkbox__toggle, {
-          [styles.checkbox__toggle_right]: checkedTwo,
-        })}
-      />
-      <div className={styles.checkbox__wrapper}>
-        <input
-          checked={checkedFirst}
-          className={styles.checkbox}
-          type='checkbox'
-          id={item.sizes[0].size + item.name}
-        />
-        <label
-          className={cn(styles.checkbox__label, {
-            [styles.checkbox__label_left]: checkedFirst,
-          })}
-          onClick={() => {
-            setCheckedFirst(!checkedFirst), setCheckedTwo(!checkedTwo)
-          }}>
-          {item.sizes[0].size}
-        </label>
-      </div>
-      <div className={styles.checkbox__wrapper}>
-        <input
-          checked={checkedTwo}
-          className={styles.checkbox}
-          type='checkbox'
-          id={item.sizes[0].size + item.name}
-        />
-        <label
-          className={cn(styles.checkbox__label, {
-            [styles.checkbox__label_right]: checkedTwo,
-          })}
-          onClick={() => {
-            setCheckedFirst(!checkedFirst), setCheckedTwo(!checkedTwo)
-          }}>
-          {item.sizes[1].size}
-        </label>
       </div>
     </div>
   )
