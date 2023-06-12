@@ -4,7 +4,7 @@ import { HomeBanner, Layout } from 'shared'
 export const Home = () => {
   return (
     <>
-      <Layout>
+      <Layout mode='menu'>
         <div>
           <ProductList />
           <HomeBanner />

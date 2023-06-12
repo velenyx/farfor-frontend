@@ -1,31 +1,47 @@
 import { Link } from 'react-router-dom'
 import styles from './Navigation.module.scss'
-import { AiFillStar } from 'react-icons/ai'
-import { NavigationData } from './navigation.data.js'
 
-export const Navigation = () => {
+import { NavigationData } from './navigation.data.js'
+import { MenuData } from './menu.data.js'
+import { BaseNavigation } from './BaseNavigation'
+
+export const Navigation = ({ mode, isSticky }) => {
+  const StickySecondNavigation =
+    (mode == 'menu' && isSticky && MenuData) || NavigationData
   return (
     <div className={styles.navigation}>
       <div className={styles.navigation__container}>
-        <div className={styles.navigation__body}>
-          {NavigationData.map(item => {
-            if (item.icon) {
-              return (
-                <Link className={styles.link} to={item.link} key={item.link + item.text}>
-                  <item.icon />
-                  <span>{item.text}</span>
-                </Link>
-              )
-            } else {
-              return (
-                <Link className={styles.link} to={item.link} key={item.link + item.text}>
-                  {item.text}
-                </Link>
-              )
-            }
-          })}
+        <div
+          className={
+            !isSticky || mode === 'default'
+              ? styles.navigation__body
+              : styles.categories
+          }>
+          {(!isSticky || mode === 'default') &&
+            NavigationData.map(item => <BaseNavigation item={item} />)}
+          <CategoryNavigation data={MenuData} mode={mode} isSticky={isSticky} />
         </div>
       </div>
     </div>
   )
+}
+
+export const CategoryNavigation = ({ data, mode, isSticky }) => {
+  if (mode === 'menu' && isSticky) {
+    return (
+      <div className={styles.categories__wrapper}>
+        <div className={styles.categories__body}>
+          <div className={styles.categories__content}>
+            {data.map(category => (
+              <Link to={category.link} className={styles.categories__link}>
+                {category.text}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return null
 }

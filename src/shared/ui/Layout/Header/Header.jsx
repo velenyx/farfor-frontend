@@ -6,13 +6,25 @@ import {
   AiOutlineClose,
 } from 'react-icons/ai'
 import cn from 'clsx'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Navigation } from './navigation/Navigation'
 import { Modal, useOnClickOutside } from 'shared'
 import styles from './Header.module.scss'
 
-export const Header = ({ backLink = '/' }) => {
+export const Header = ({ backLink = '/', mode }) => {
   const [showCityModal, setShowCityModal] = useState(false)
+  const [isSticky, setIsSticky] = useState(false)
+
+  const handleScroll = () => {
+    if (window.scrollY > 1) setIsSticky(true)
+    if (window.scrollY < 1) setIsSticky(false)
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const {
     isShow: showTimeModal,
     setIsShow: setShowTimeModal,
@@ -20,7 +32,10 @@ export const Header = ({ backLink = '/' }) => {
   } = useOnClickOutside(false)
 
   return (
-    <>
+    <header
+      className={cn(styles.header__wrapper, {
+        [styles.header__wrapper_sticky]: isSticky,
+      })}>
       {/* <div
         className={cn(styles.city__modal_substrate, {
           [styles.opacityShow]: showCityModal,
@@ -86,7 +101,7 @@ export const Header = ({ backLink = '/' }) => {
       </Modal>
 
       {/* </div> */}
-      <header className={styles.header}>
+      <div className={styles.header}>
         <div className={styles.header__container}>
           <div className={styles.information}>
             <Link className={styles.information__logo} to={backLink}>
@@ -161,8 +176,8 @@ export const Header = ({ backLink = '/' }) => {
             </Link>
           </div>
         </div>
-      </header>
-      <Navigation />
-    </>
+      </div>
+      <Navigation mode={mode} isSticky={isSticky} />
+    </header>
   )
 }

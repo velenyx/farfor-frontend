@@ -1,5 +1,15 @@
 @import 'src/app/styles/index.scss';
+.header__wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
 
+  &_sticky {
+    filter: drop-shadow(0 6px 30px rgba(50, 52, 72, 0.1));
+    transition: all 0.3s;
+  }
+}
 .header {
   border-bottom: 1px solid #f1f4f9;
 }
