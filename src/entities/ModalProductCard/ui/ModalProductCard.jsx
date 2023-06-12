@@ -1,4 +1,4 @@
-import { CheckBoxSlide, ProductBuy, Tags } from 'shared'
+import { CheckBoxSlide, ProductBuy, Tags, getServerUrl } from 'shared'
 import styles from './ModalProductCard.module.scss'
 import { Fragment, useState } from 'react'
 
@@ -11,11 +11,7 @@ export const ModalProductCard = ({ product }) => {
       <div className={styles.modal__wrapper}>
         <div className={styles.modal__image}>
           <div style={{ position: 'relative' }}>
-            <img
-              src={`http://localhost:8000/api/v1${product.image}`}
-              alt=''
-              draggable={false}
-            />
+            <img src={getServerUrl(product.image)} alt='' draggable={false} />
             {product.promotion && (
               <div
                 className={styles.promotion}
@@ -29,7 +25,9 @@ export const ModalProductCard = ({ product }) => {
           )}
 
           {product.properties.map(tag => (
-            <Tags tag={tag} height={24} width={24} />
+            <Fragment key={tag.icon}>
+              <Tags tag={tag} height={24} width={24} />
+            </Fragment>
           ))}
         </div>
 

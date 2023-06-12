@@ -1,11 +1,13 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import styles from './ProductCard.module.scss'
 import cn from 'clsx'
-import { CheckBoxSlide, ProductBuy, Tags } from 'shared'
+import { CheckBoxSlide, ProductBuy, Tags, getServerUrl } from 'shared'
 
 export const ProductCard = ({ product, handleModal, index, handleSwiper }) => {
   const [checkedFirst, setCheckedFirst] = useState(true)
   const [checkedTwo, setCheckedTwo] = useState(false)
+
+  const backgroundImgSrc = getServerUrl(product.image)
 
   return (
     <div className={styles.product}>
@@ -18,7 +20,7 @@ export const ProductCard = ({ product, handleModal, index, handleSwiper }) => {
         <div
           className={styles.image}
           style={{
-            backgroundImage: `url('http://localhost:8000/api/v1${product.image}')`,
+            backgroundImage: `url(${backgroundImgSrc})`,
           }}
         />
         {product.discount > 1 && (

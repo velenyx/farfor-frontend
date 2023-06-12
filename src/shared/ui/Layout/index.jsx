@@ -1,3 +1,4 @@
+import { AcceptCookie } from 'features/acceptCookie'
 import { Footer } from './Footer/Footer'
 import { Header } from './Header/Header'
 
@@ -7,6 +8,7 @@ export const Layout = ({ children }) => {
       <Header />
       <main className='main__container'>{children}</main>
       <Footer />
+      <AcceptCookie />
     </>
   )
 }
