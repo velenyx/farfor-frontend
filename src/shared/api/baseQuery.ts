@@ -13,11 +13,11 @@ export const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryE
   fetchBaseQuery({
     baseUrl: config.API_ENDPOINT,
     prepareHeaders: (headers, { getState }) => {
-      // const { accessToken } = (getState() as RootState).session
+      const { accessToken } = (getState() as RootState).session
 
-      // if (accessToken) {
-      //   headers.set('Authorization', `Bearer ${accessToken}`)
-      // }
+      if (accessToken) {
+        headers.set('Authorization', `Bearer ${accessToken}`)
+      }
 
       return headers
     },

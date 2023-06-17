@@ -8,11 +8,24 @@ import { Link } from 'react-router-dom'
 import styles from './Header.module.scss'
 import { Navigation } from './navigation/Navigation'
 
+import { useCheckTokenMutation } from '~/entities/session/api/sessionApi'
+import { selectIsAuthorized } from '~/entities/session/model/slice'
 import { Modal, useOnClickOutside } from '~/shared'
+import { useAppSelector } from '~/shared/model/hooks'
 
 export const Header: FC<$TSFixMe> = ({ backLink = '/', mode }) => {
   const [showCityModal, setShowCityModal] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
+  const isAuth = useAppSelector(selectIsAuthorized)
+  const [updateTokens, result] = useCheckTokenMutation()
+
+  useEffect(() => {
+    updateTokens()
+  }, [])
+
+  console.log('@tokens', result)
+
+  console.log('@isAuth', isAuth)
 
   const handleScroll = () => {
     if (window.scrollY > 1) setIsSticky(true)
@@ -141,7 +154,7 @@ export const Header: FC<$TSFixMe> = ({ backLink = '/', mode }) => {
           </div>
           <div className={styles.widgets}>
             <Link to="/login" className={styles.auth}>
-              <AiOutlineUser /> <span>Вход</span>
+              <AiOutlineUser /> <span>{isAuth ? 'Профиль' : 'Вход'}</span>
             </Link>
             <Link to="/basket" className={styles.cart}>
               <AiOutlineShoppingCart />

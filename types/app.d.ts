@@ -45,9 +45,9 @@ declare global {
    */
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-  declare type RootState = import('../src/app/appStore').RootState
+  declare type RootState = import('../src/app/providers/store/appStore').RootState
   // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-  declare type AppDispatch = import('../src/app/appStore').AppDispatch
+  declare type AppDispatch = import('../src/app/providers/store/appStore').AppDispatch
 }
 
 export {}
