@@ -1,0 +1,168 @@
+@import 'src/app/styles/index.scss';
+
+.footer {
+  background-color: #f9fafb;
+
+  &__container {
+  }
+
+  &__links {
+    padding: 40px 0;
+    border-bottom: 1px solid #d8dee9;
+    display: grid;
+    gap: rem(36);
+    grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1fr;
+  }
+
+  &__copy {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 40px;
+  }
+}
+
+.list__links {
+  display: flex;
+  flex-direction: column;
+  gap: rem(15);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 20px;
+  color: #555a6a;
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+  }
+}
+
+.link {
+  color: #555a6a;
+  font-size: 14px;
+  line-height: 500;
+  line-height: rem(17);
+}
+
+.copy__left {
+  display: flex;
+  align-items: center;
+  gap: rem(100);
+}
+
+.copyright {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #555a6a;
+}
+
+.requisites {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  color: #555a6a;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.button__apps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  gap: rem(20);
+
+  color: #fff;
+  min-height: rem(45);
+  background-color: #2c2f39;
+  border-radius: 10px;
+
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 800;
+  transition: all 0.3s ease 0s;
+
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+  }
+
+  svg {
+    width: rem(20);
+    height: rem(20);
+
+    &:last-child {
+      width: rem(16);
+      height: rem(16);
+    }
+  }
+
+  span {
+    &:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  svg {
+    &:not(:last-child) {
+      margin-right: rem(10);
+    }
+  }
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #3e4250;
+    }
+  }
+}
+
+.footer__qr {
+  display: flex;
+  align-items: center;
+
+  gap: rem(25);
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+  }
+}
+
+.qr__text {
+  font-size: rem(12);
+  font-weight: 500;
+  line-height: 14px;
+  color: #555a6a;
+}
+
+.footer__available {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  color: #555a6a;
+}
+
+.copy__right {
+  display: flex;
+  align-items: center;
+
+  padding-right: rem(80);
+  gap: rem(150);
+}
+
+.payment {
+  display: flex;
+  gap: rem(20);
+}
+
+.socials {
+  display: flex;
+  gap: rem(20);
+
+  img {
+    height: rem(38);
+    width: rem(38);
+  }
+}
