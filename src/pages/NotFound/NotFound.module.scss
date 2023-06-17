@@ -1,0 +1,46 @@
+@import 'src/app/styles/index.scss';
+
+.found__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: rem(100);
+}
+
+.image__wrapper {
+  width: 100%;
+  max-width: rem(522);
+  filter: drop-shadow(0 40px 100px rgba(0, 0, 0, 0.2));
+
+  img {
+    width: 100%;
+  }
+}
+
+.text {
+  margin-top: rem(50);
+  font-size: rem(25);
+  font-weight: 500;
+  line-height: rem(23);
+  color: #9ea7b6;
+}
+
+.button {
+  margin-top: rem(40);
+  font-size: rem(18);
+  padding: rem(16) rem(54);
+  font-weight: 700;
+  line-height: rem(19);
+  color: #fe5000;
+  background-color: #fff3ee;
+  border-radius: rem(15);
+  transition: all 0.5s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #ff7e43;
+      color: #fff3ee;
+    }
+  }
+}

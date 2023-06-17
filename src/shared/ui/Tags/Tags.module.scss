@@ -1,0 +1,48 @@
+@import 'src/app/styles/index.scss';
+
+.tags {
+  padding-top: rem(12);
+  position: absolute;
+  display: flex;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+  row-gap: rem(10);
+
+  img {
+    width: rem(20);
+    height: rem(20);
+  }
+}
+
+.tags__body {
+  display: flex;
+  position: relative;
+}
+
+.tag__tooltip {
+  opacity: 0;
+  pointer-events: none;
+  width: max-content;
+  position: absolute;
+
+  top: -70%;
+  left: 150%;
+
+  background-color: #000;
+  color: #fff;
+  border-radius: rem(16);
+  font-size: rem(14);
+  line-height: rem(22);
+  padding: rem(16);
+}
+
+.tag__icon {
+  @media (any-hover: hover) {
+    &:hover {
+      + .tag__tooltip {
+        opacity: 1;
+      }
+    }
+  }
+}
