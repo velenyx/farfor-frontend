@@ -8,7 +8,7 @@ import styles from './ProductList.module.scss'
 
 import { ModalProductCard } from '~/entities/ModalProductCard'
 import { ProductCard } from '~/entities/productCard'
-import { usePopularProductsQuery } from '~/entities/productCard/api/productApi'
+import { productApis, usePopularProductsQuery } from '~/entities/productCard/api/productApi'
 import { Modal } from '~/shared'
 
 import 'swiper/css'
