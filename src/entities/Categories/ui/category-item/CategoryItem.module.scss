@@ -1,0 +1,40 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: hidden;
+  background-color: #f9fafb;
+  border-radius: 20px;
+  &:not(:last-child) {
+    margin-right: 12px;
+  }
+  width: 90px;
+  height: 112px;
+
+  &__image {
+    width: 80px;
+    height: 62px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0;
+  }
+
+  &__title {
+    white-space: pre-wrap;
+    line-height: 16px;
+    width: 100%;
+    padding: 0 0 25px 12px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #2c2f39;
+
+    .category__active & {
+      color: #fe5000;
+    }
+  }
+
+  &__active {
+    background-color: #fe50002d;
+  }
+}

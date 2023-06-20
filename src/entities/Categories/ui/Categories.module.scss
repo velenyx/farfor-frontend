@@ -1,0 +1,18 @@
+.categories {
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  white-space: nowrap;
+  max-width: 100%;
+
+  min-height: 112px;
+  padding: 30px 0 0;
+
+  &__wrapper {
+    contain: content;
+    display: flex;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+}
