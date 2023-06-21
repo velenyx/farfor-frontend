@@ -1,0 +1,62 @@
+@import 'src/app/styles/index.scss';
+
+.sale {
+  position: relative;
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  grid-template-columns: 100%;
+  justify-content: space-between;
+  color: rgba(0,0,0,.87);
+
+  &__top {
+    height: max-content;
+    cursor: pointer;
+    &-image {
+      z-index: 0;
+      max-width: 100%;
+      margin-bottom: 25px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+    }
+    &-headline {
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 19px;
+    }
+  }
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-description {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+  }
+}
+
+.v-responsive__sizer {
+  transition: padding-bottom .2s cubic-bezier(.25,.8,.5,1);
+  flex: 1 0 0px;
+}
+
+.v-reponse__content {
+  margin-left: -100%;
+  flex: 1 0 0px;
+  max-width: 100%;
+}
+
+.v-image__image {
+  z-index: -1;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}

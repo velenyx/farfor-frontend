@@ -1,0 +1,10 @@
+@import 'src/app/styles/index.scss';
+
+.sales__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 376px);
+  grid-gap: 80px 0;
+  gap: 80px 0;
+  justify-content: space-between;
+  width: 100%;
+}

@@ -1,0 +1,45 @@
+@import 'src/app/styles/index.scss';
+.swiper__prev {
+  position: absolute;
+  top: 42%;
+  left: -1%;
+  cursor: pointer;
+  z-index: 300;
+  transform: rotate(-90deg);
+  background-color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(65,58,91,.15);
+
+  svg {
+    width: 30px;
+    height: 30px;
+    fill: #2c2f39;
+  }
+}
+.swiper__next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  right: -1%;
+  z-index: 300;
+  transform: rotate(90deg);
+  background-color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(65,58,91,.15);
+
+  svg {
+    width: 30px;
+    height: 30px;
+    fill: #2c2f39;
+  }
+}
