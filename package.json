@@ -6,20 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "format": "npx prettier --write **/*.{ts,tsx,css,mdx}",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.mjs",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006 -c ./config/storybook"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "yarn format",
-      "yarn lint:ts:fix",
-      "yarn lint:scss:fix"
+    "**/*.{ts,tsx}": [
+      "npm run format",
+      "npm run lint:ts:fix",
+      "npm run lint:scss:fix"
     ]
   },
   "dependencies": {

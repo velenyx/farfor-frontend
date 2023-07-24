@@ -1,9 +1,8 @@
-import type { StorybookConfig } from '@storybook/nextjs';
 import * as path from 'path';
 
+import type { StorybookConfig } from '@storybook/nextjs';
+
 const config: StorybookConfig = {
-  staticDirs: ['./public'],
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -16,11 +15,16 @@ const config: StorybookConfig = {
       }
     }
   ],
+  core: {},
+  docs: {
+    autodocs: true
+  },
   framework: {
     name: '@storybook/nextjs',
     options: {}
   },
-  core: {},
+  staticDirs: ['./public'],
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
   webpackFinal: (config) => {
     if (config.resolve) {
       config.resolve.alias = {
@@ -29,9 +33,6 @@ const config: StorybookConfig = {
       };
     }
     return config;
-  },
-  docs: {
-    autodocs: true
   }
 };
 export default config;
