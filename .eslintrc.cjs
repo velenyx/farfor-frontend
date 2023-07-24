@@ -1,84 +1,103 @@
 module.exports = {
-  env: {
-    es6: true,
-    browser: true,
-    es2021: true,
-    jest: true,
-  },
-  parser: "@typescript-eslint/parser",
-  plugins: ["react", "react-hooks", "@typescript-eslint", "prettier", "eslint-plugin-import"],
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      parserOptions: {
-        project: "./tsconfig.json",
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: 2018,
-        sourceType: "module",
-      },
-      extends: [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
+    root: true,
+    env: {
+        browser: true,
+        es2021: true,
+        jest: true,
+    },
+    extends: [
+        // "next",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      ],
-      rules: {
-        "linebreak-style": ["error", "unix"],
-        "no-empty-function": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-unsafe-assignment": "off",
-        "@typescript-eslint/no-unsafe-call": "off",
-        "@typescript-eslint/no-floating-promises": "off",
-        "@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: false }],
-        "prettier/prettier": "error",
-        "react/display-name": "off",
-        "react/prop-types": "off",
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
-        "no-console": "warn",
-        "no-case-declarations": "off",
-        "@typescript-eslint/unbound-method": "off",
-        "@typescript-eslint/no-unsafe-member-access": "off",
-        "@typescript-eslint/no-unsafe-argument": "off",
-        "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/no-unsafe-return": "off",
-        "@typescript-eslint/restrict-plus-operands": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
-        "import/order": [
-          "error",
-          {
-            groups: [["external", "builtin"], "internal", ["sibling", "parent"], "index"],
-            pathGroups: [
-              {
-                pattern: "@(react)",
-                group: "external",
-                position: "before",
-              },
-              {
-                pattern: "@(~app|~shared|~features|~pages|~entities)/**",
-                group: "internal",
-              },
-            ],
-            pathGroupsExcludedImportTypes: ["internal", "react"],
-            "newlines-between": "always",
-            alphabetize: {
-              order: "asc",
-              caseInsensitive: true,
-            },
-          },
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        "plugin:react/recommended",
+        "airbnb",
+        "airbnb-typescript",
+        "airbnb/hooks",
+        'plugin:storybook/recommended',
+        'plugin:react/jsx-runtime',
+        "plugin:prettier/recommended",
+        "plugin:react-hooks/recommended",
+    ],
+    overrides: [],
+    parser: "@typescript-eslint/parser",
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true
+        },
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: ['tsconfig.json']
+    },
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx'],
+            parserOptions: {}
+        }
+    ],
+    plugins: ["@typescript-eslint", "react", 'prettier', 'react-hooks'],
+    rules: {
+        "react/display-name": 0,
+        '@typescript-eslint/no-shadow': 0,
+        '@typescript-eslint/consistent-type-imports': [
+            'error',
+            {prefer: 'type-imports', disallowTypeAnnotations: false}
         ],
-      },
+        'react/function-component-definition': [
+            2,
+            {
+                namedComponents: 'arrow-function',
+                unnamedComponents: 'arrow-function'
+            }
+        ],
+        'react/prop-types': 0,
+        'react/react-in-jsx-scope': 0,
+        'react/jsx-props-no-spreading': 0,
+        'react/require-default-props': 0,
+        'react/button-has-type': 0,
+        'react/no-unstable-nested-components': [
+            2,
+            {
+                allowAsProps: true
+            }
+        ],
+        'react/no-array-index-key': 0,
+        'no-param-reassign': 0,
+        'sort-keys': ['error', 'asc', {natural: true}],
+        'react/jsx-filename-extension': [2, {extensions: ['.js', '.jsx', '.ts', '.tsx']}],
+        'react/jsx-sort-props': [
+            2,
+            {
+                callbacksLast: true,
+                shorthandFirst: true,
+                ignoreCase: true,
+                reservedFirst: true
+            }
+        ],
+        'import/order': 0,
+        'import/extensions': 0,
+        'import/no-extraneous-dependencies': 0,
+        'import/prefer-default-export': 0,
+        'import/export': 0,
+        'import/order': [
+            2,
+            {
+                groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+                'newlines-between': 'always',
+                pathGroups: [
+                    {
+                        pattern: '~/**',
+                        group: 'internal'
+                    },
+                    {
+                        pattern: "{.,..}/**/*\.scss", // same directory only
+                        group: "object",
+                        position: "after"
+                    }
+                ],
+                alphabetize: {
+                    order: 'asc'
+                }
+            }
+        ],
     },
-  ],
-  settings: {
-    react: {
-      version: "detect",
-    },
-  },
-}
+};
