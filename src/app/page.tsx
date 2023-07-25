@@ -1,7 +1,12 @@
+import { Button } from '~/shared/ui/Button/Button';
+
 const Home = () => {
   return (
     <main>
-      <h1>123123</h1>
+      <div>
+        <h1>Heyheyhey!12312</h1>
+        <Button href='https://google.com'>Test btn</Button>
+      </div>
     </main>
   );
 };

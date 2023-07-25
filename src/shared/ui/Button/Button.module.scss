@@ -1,3 +1,49 @@
 .Button {
+  position: relative;
+  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 40px;
+  padding: 12px 25px;
+  min-height: 40px;
+  text-transform: none;
+  transition-duration: .28s;
+  transition-property: box-shadow, transform, opacity;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  font-weight: 800;
+
+  &::before {
+    background-color: currentcolor;
+    border-radius: inherit;
+    inset: 0;
+    color: inherit;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity .2s cubic-bezier(.4, 0, .6, 1);
+  }
+
+  &:hover {
+    &::before {
+      opacity: .2;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: .7;
+  }
+}
+
+.primary {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.backgroundInverted {
+  background-color: var(--grey-color-main);
+  color: var(--primary-color-dark);
 }

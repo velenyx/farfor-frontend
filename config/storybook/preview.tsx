@@ -1,4 +1,15 @@
 import type { Preview } from '@storybook/react';
+import * as NextImage from 'next/image';
+import '~/app/styles/index.scss';
+
+import './font.scss';
+
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, '123', {
+  configurable: true,
+  value: (props: any) => <OriginalNextImage {...props} unoptimized />
+});
 
 const preview: Preview = {
   decorators: [

@@ -11,7 +11,11 @@ const config: StorybookConfig = {
     {
       name: '@storybook/addon-styling',
       options: {
-        postCss: true
+        sass: {
+          // Require your Sass preprocessor here
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,global-require
+          implementation: require('sass')
+        }
       }
     }
   ],
@@ -21,15 +25,18 @@ const config: StorybookConfig = {
   },
   framework: {
     name: '@storybook/nextjs',
-    options: {}
+    options: {
+      nextConfigPath: path.resolve(__dirname, '../next.config.js')
+    }
   },
-  staticDirs: ['./public'],
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+  staticDirs: ['../../public'],
+  stories: ['../../src/**/*.stories.mdx', '../../src/**/*.stories.@(ts|tsx)'],
   webpackFinal: (config) => {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
-        '~/*': path.resolve(__dirname, './src')
+        '~/*': path.resolve(__dirname, './src'),
+        public: path.resolve(__dirname, '../../public')
       };
     }
     return config;

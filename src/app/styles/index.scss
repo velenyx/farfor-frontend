@@ -1,0 +1,23 @@
+@import "reset";
+@import "variables/global";
+
+body {
+  background: var(--bg-color);
+  font: var(--font-m);
+  color: var(--primary-color);
+}
+
+.app {
+  min-height: 100vh;
+}
+
+// Для общего Layout - хедер. футер
+.content-page {
+  display: flex;
+}
+
+// Конкретно для страницы
+.page-wrapper {
+  flex: 1 1 auto;
+  flex-shrink: 100;
+}

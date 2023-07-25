@@ -1,0 +1,15 @@
+import {IconGallery, IconItem, Meta} from '@storybook/blocks';
+
+import {ICON_OPTIONS} from './storybook';
+
+<Meta title='shared/icons'/>
+
+# Iconography
+
+<IconGallery>
+    {Object.entries(ICON_OPTIONS).map(([iconName, iconComponent]) => (
+        <IconItem name={iconName} key={iconName}>
+            {iconComponent}
+        </IconItem>
+    ))}
+</IconGallery>

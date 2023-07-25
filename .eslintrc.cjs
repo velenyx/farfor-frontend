@@ -4,6 +4,7 @@ module.exports = {
         browser: true,
         es2021: true,
         jest: true,
+        node: true
     },
     extends: [
         // "next",
@@ -100,4 +101,13 @@ module.exports = {
             }
         ],
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+            rules: {
+                '@typescript-eslint/no-unsafe-assignment': 'off',
+                'max-len': 'off',
+            },
+        },
+    ],
 };
